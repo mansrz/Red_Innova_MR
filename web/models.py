@@ -63,7 +63,7 @@ class Institucion(Entidad):
     recursos_ofrece = models.TextField()
 
 class SolicitudAdherencia(models.Model):
-    persona = models.ForeighKey(Persona)
+    persona = models.ForeignKey(Persona)
     institucion = models.ForeignKey(Institucion)
     fecha = models.DateTimeField()
 
@@ -88,3 +88,76 @@ class Mensaje(models.Model):
     remitente = models.ForeignKey(User)
     fecha = models.DateTimeField()
     texto = models.TextField()
+
+class Recomendacion():
+    emisor = models.ForeignKey(User)
+    remitente = models.ForeignKey(User)
+    fecha = models.DateTimeField(auto_now_add=True)
+    texto = models.TextField()
+    estrellas = models.PositiveSmallInteger()
+    # TODO demanda/oferta/lo-que-sea que se se recomiende
+
+class Publicacion():
+
+    nombre = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200)
+    tags = models.CharField(max_length=200)
+
+    fecha_limite = models.DateField()
+
+    dominio = models.CharField(max_length=200)
+    subdominio = models.CharField(max_length=200)
+
+    lugar = models.CharField(max_length=200)
+
+    #Beneficiario es usuario final (Descripcion)
+    perfil_beneficiario = models.TextField()
+    #Cliente es usuario que invierte (Descripcion)
+    perfil_cliente = models.TextField()
+
+    descripcion_soluciones = models.TextField(null = True)
+
+    DESCATIVADA, ACTIVA, TERMINADA, CENSURADA = 0, 1, 2, 3
+    ESTADOS = (
+        (DESACTIVADA, 'Desactivada'),
+        (ACTIVA, 'Activa'),
+        (TERMINADA, 'Terminada'),
+        (CENSURADA, 'Censurada'),
+    )
+    estado = models.PositiveSmallInteger(choices=ESTADOS)
+
+    # TODO: ambito, alcance, privacidad
+
+class Demanda(Publicacion):
+    descripcion_importancia = models.TextField()
+
+    #Control de versiones.
+    nombre_instancia = models.CharField(max_length=200, null=True)
+    padre = models.ForeignKey(Demanda, null=True)
+
+
+class Oferta(Publicacion):
+
+    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2, 3
+    TIPOS = (
+        (TECNOLOGIA, 'Tecnología'),
+        (PROTOTIPO, 'Prototipo'),
+        (EMPRENDIMIENTO, 'Emprendimiento'),
+    )
+    estado = models.PositiveSmallInteger(choices=TIPOS)
+
+    descripcion_propuesta_valor = models.TextField()
+
+    bmc = models.FileField(upload_to='ofertas_bmc/%Y/%m/%d')
+    porter = models.FileField(upload_to='ofertas_porter/%Y/%m/%d')
+    cuadro_competidores = models.FileField(upload_to='ofertas_competidores/%Y/%m/%d')
+    cuadro_tendencias = models.FieldField(upload_to='ofertas_tendencias/%Y/%m/%d')
+
+    foto = models.ImageField(upload_to='oferta_foto/%Y/%m/%d')
+
+    estado_propiedad_intelectual = models.CharField(max_length=100, null=True)
+
+    evidencia_traccion = models.TextField(null=True)
+
+    equipo = models.TextField()
+    roles_equipos = models.TextField()

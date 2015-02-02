@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 
 # modelo  User de Django ser
 
-from django.auth.models import User
+from django.contrib.auth.models import User
 
 class SimpleModel(models.Model):
     nombre = models.CharField(max_length=100)
@@ -16,10 +17,10 @@ class Pais(SimpleModel):
     pass
 
 class Entidad(models.Model):
-    user = ForeignKey(User, related_name='persona')
+    user = models.ForeignKey(User)
 
-    ciudad = ForeignKey(Ciudad)
-    pais = ForeignKey(Pais)
+    ciudad = models.ForeignKey(Ciudad)
+    pais = models.ForeignKey(Pais)
 
     sitio_web = models.CharField(max_length=200)
     telefono = models.CharField(max_length=200)
@@ -34,7 +35,7 @@ class Entidad(models.Model):
         (ACTIVO, 'Activo'),
         (SUSPENDIDO, 'Suspendido'),
     )
-    estado = models.PositiveSmallInteger(choices=ESTADOS)
+    estado = models.PositiveSmallIntegerField(choices=ESTADOS)
 
     class Meta:
         abstract = True
@@ -44,7 +45,7 @@ class Persona(Entidad):
     foto = models.ImageField(upload_to='persona_fotos/%Y/%m/%d')
 
     # Personas independientes tiene None en institucion
-    institucion = ForeignKey(Institucion, null=True)
+    institucion = models.ForeignKey('Institucion', null=True)
     cargo = models.CharField(max_length=100)
     actividad = models.TextField()
 
@@ -84,17 +85,17 @@ class PrivacidadInstitucion(Privacidad):
     alcance_consursos = models.BooleanField(default=True)
 
 class Mensaje(models.Model):
-    emisor = models.ForeignKey(User)
-    remitente = models.ForeignKey(User)
+    emisor = models.ForeignKey(User, related_name='+')
+    remitente = models.ForeignKey(User, related_name='+')
     fecha = models.DateTimeField()
     texto = models.TextField()
 
 class Recomendacion(models.Model):
-    emisor = models.ForeignKey(User)
-    remitente = models.ForeignKey(User)
+    emisor = models.ForeignKey(User, related_name='+')
+    remitente = models.ForeignKey(User, related_name='+')
     fecha = models.DateTimeField(auto_now_add=True)
     texto = models.TextField()
-    estrellas = models.PositiveSmallInteger()
+    estrellas = models.PositiveSmallIntegerField()
     # TODO demanda/oferta/lo-que-sea que se se recomiende
 
 class Publicacion(models.Model):
@@ -117,14 +118,14 @@ class Publicacion(models.Model):
 
     descripcion_soluciones = models.TextField(null = True)
 
-    DESCATIVADA, ACTIVA, TERMINADA, CENSURADA = 0, 1, 2, 3
+    DESACTIVADA, ACTIVA, TERMINADA, CENSURADA = 0, 1, 2, 3
     ESTADOS = (
         (DESACTIVADA, 'Desactivada'),
         (ACTIVA, 'Activa'),
         (TERMINADA, 'Terminada'),
         (CENSURADA, 'Censurada'),
     )
-    estado = models.PositiveSmallInteger(choices=ESTADOS)
+    estado = models.PositiveSmallIntegerField(choices=ESTADOS)
 
     # TODO: ambito, alcance, privacidad
 
@@ -133,25 +134,25 @@ class Demanda(Publicacion):
 
     #Control de versiones.
     nombre_instancia = models.CharField(max_length=200, null=True)
-    padre = models.ForeignKey(Demanda, null=True)
+    padre = models.ForeignKey('self', null=True)
 
 
 class Oferta(Publicacion):
 
-    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2, 3
+    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2
     TIPOS = (
         (TECNOLOGIA, 'Tecnología'),
         (PROTOTIPO, 'Prototipo'),
         (EMPRENDIMIENTO, 'Emprendimiento'),
     )
-    tipo = models.PositiveSmallInteger(choices=TIPOS)
+    tipo = models.PositiveSmallIntegerField(choices=TIPOS)
 
     descripcion_propuesta_valor = models.TextField()
 
     bmc = models.FileField(upload_to='ofertas_bmc/%Y/%m/%d')
     porter = models.FileField(upload_to='ofertas_porter/%Y/%m/%d')
     cuadro_competidores = models.FileField(upload_to='ofertas_competidores/%Y/%m/%d')
-    cuadro_tendencias = models.FieldField(upload_to='ofertas_tendencias/%Y/%m/%d')
+    cuadro_tendencias = models.FileField(upload_to='ofertas_tendencias/%Y/%m/%d')
 
     foto = models.ImageField(upload_to='oferta_foto/%Y/%m/%d')
 
@@ -168,13 +169,13 @@ class Incubacion(models.Model):
     descripcion = models.TextField()
     condiciones = models.TextField()
     descripcion_ofertas = models.TextField()
-    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2, 3
+    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2
     TIPOS = (
         (TECNOLOGIA, 'Tecnología'),
         (PROTOTIPO, 'Prototipo'),
         (EMPRENDIMIENTO, 'Emprendimiento'),
     )
-    tipo = models.PositiveSmallInteger(choices=TIPOS)
+    tipo = models.PositiveSmallIntegerField(choices=TIPOS)
     #TODO alcance
 
 

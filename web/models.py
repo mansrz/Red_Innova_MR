@@ -89,7 +89,7 @@ class Mensaje(models.Model):
     fecha = models.DateTimeField()
     texto = models.TextField()
 
-class Recomendacion():
+class Recomendacion(models.Model):
     emisor = models.ForeignKey(User)
     remitente = models.ForeignKey(User)
     fecha = models.DateTimeField(auto_now_add=True)
@@ -97,7 +97,7 @@ class Recomendacion():
     estrellas = models.PositiveSmallInteger()
     # TODO demanda/oferta/lo-que-sea que se se recomiende
 
-class Publicacion():
+class Publicacion(models.Model):
 
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=200)
@@ -144,7 +144,7 @@ class Oferta(Publicacion):
         (PROTOTIPO, 'Prototipo'),
         (EMPRENDIMIENTO, 'Emprendimiento'),
     )
-    estado = models.PositiveSmallInteger(choices=TIPOS)
+    tipo = models.PositiveSmallInteger(choices=TIPOS)
 
     descripcion_propuesta_valor = models.TextField()
 
@@ -161,3 +161,25 @@ class Oferta(Publicacion):
 
     equipo = models.TextField()
     roles_equipos = models.TextField()
+
+class Incubacion(models.Model):
+    fecha_inicio = models.DateField()
+    nombre = models.CharField(max_length=20)
+    descripcion = models.TextField()
+    condiciones = models.TextField()
+    descripcion_ofertas = models.TextField()
+    TECNOLOGIA, PROTOTIPO, EMPRENDIMIENTO = 0, 1, 2, 3
+    TIPOS = (
+        (TECNOLOGIA, 'Tecnología'),
+        (PROTOTIPO, 'Prototipo'),
+        (EMPRENDIMIENTO, 'Emprendimiento'),
+    )
+    tipo = models.PositiveSmallInteger(choices=TIPOS)
+    #TODO alcance
+
+
+
+
+
+
+

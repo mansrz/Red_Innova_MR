@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
     <title>REI-NET - P&aacute;gina de Perfil</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="css/custom.css" />
-    <link href="fonts/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/elements.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}" />
+    <link href="{% static "fonts/font-awesome-4.0.3/css/font-awesome.min.css" %}" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -234,7 +234,7 @@
               <div class="thumbnail">
                 <div class="avatar">
                   <a href="#" class="thumbnail bottom-15" data-toggle="modal" data-target="#upload-avatar" id="a_avatar">
-                    <img src="img/face1.jpg" alt="...">
+                    <img src="{% static "img/face1.jpg" %}" alt="...">
                   </a>
                   <!-- Upload new avatar bubble -->
                   <div class="avatar-bubble">
@@ -296,7 +296,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <img src="img/face1.jpg" alt="..." id="mensajeFoto">
+                        <img src="{% static "img/face1.jpg" %}" alt="..." id="mensajeFoto">
                         <h4 class="modal-title" id="mensajeTitulo">Usuario Independiente</h4>
                         <p class="text-muted"><i class="fa fa-envelope"></i> Nuevo Mensaje</p>
                         <div class="clearfix"></div>
@@ -325,7 +325,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <img src="img/face1.jpg" alt="...">
+                        <img src="{% static "img/face1.jpg" %}" alt="...">
                         <h4 class="modal-title" id="sendpmtitle">Usuario Independiente</h4>
 <!--
                         <p class="text-muted"><i class="fa fa-envelope"></i> Nuevo PM</p>-->
@@ -420,16 +420,16 @@
               </p>
               <div class="user-gallery text-center">
                 <a href="#">
-					<img src="img/works1.jpg" alt="...">
+					<img src="{% static "img/works1.jpg" %}" alt="...">
 				</a>
-                <a href="#"><img src="img/works2.jpg" alt="..."></a>
-                <a href="#"><img src="img/works3.jpg" alt="..."></a>
-                <a href="#"><img src="img/works4.jpg" alt="..."></a>
-                <a href="#"><img src="img/works1.jpg" alt="..."></a>
-                <a href="#"><img src="img/works2.jpg" alt="..."></a>
-                <a href="#"><img src="img/works3.jpg" alt="..."></a>
-                <a href="#"><img src="img/works4.jpg" alt="..."></a>
-                <a href="#"><img src="img/dots.jpg" alt="..."></a>
+                <a href="#"><img src="{% static "img/works2.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works3.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works4.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works1.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works2.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works3.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/works4.jpg" %}" alt="..."></a>
+                <a href="#"><img src="{% static "img/dots.jpg" %}" alt="..."></a>
               </div>
             </div>
           </div>
@@ -524,10 +524,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/scrolltopcontrol.js"></script><!-- Scroll to top javascript -->
-    <script src="js2/funcionesperfil.js"></script>
-    <script src="js2/SesionID.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/custom.js" %}"></script>
+    <script src="{% static "js/scrolltopcontrol.js" %}"></script><!-- Scroll to top javascript -->
+    <script src="{% static "js2/funcionesperfil.js" %}"></script>
+    <script src="{% static "js2/SesionID.js" %}"></script>
   </body>
 </html>

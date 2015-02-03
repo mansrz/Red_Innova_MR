@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
     <title>The Highland Template - Blog Post</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="css/custom.css" />
-    <link href="fonts/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/elements.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}" />
+    <link href="{% static "fonts/font-awesome-4.0.3/css/font-awesome.min.css" %}" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -186,7 +187,7 @@
           </ul>
           <hr>
           <p class="blog-text">
-            <img class="pull-right img-responsive blog-img" alt="..." src="img/works1.jpg">
+            <img class="pull-right img-responsive blog-img" alt="..." src="{% static "img/works1.jpg" %}">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur urna at neque mollis sagittis. Vivamus viverra justo in dui vulputate tincidunt in eu magna. Ut ut risus pretium, varius felis a, congue metus. Nam aliquam pretium eros, et venenatis sapien porttitor at. Nunc bibendum ipsum sit amet euismod sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam varius justo sed velit dictum feugiat. Sed tempus eros quis eleifend posuere. Fusce tempus euismod sem vitae porta. Vestibulum eget mi suscipit, ultrices turpis quis, ultricies ipsum. Pellentesque et facilisis odio. Vivamus et mauris consequat, rhoncus risus vitae, porttitor dui.
             <br /><br />
             Maecenas non laoreet ipsum, id mattis nunc. Vestibulum viverra sapien a porta venenatis. Morbi in dignissim quam, eu malesuada lorem. Integer quis cursus ligula. Proin elementum, massa egestas rhoncus blandit, tortor mauris pellentesque eros, eget volutpat ligula nunc quis sapien. Integer eget cursus turpis. Sed non aliquam odio. Nullam et arcu sed felis interdum aliquam. Fusce euismod, mauris non lacinia porttitor, enim tortor porttitor diam, sit amet fringilla felis orci bibendum erat. Praesent lectus mauris, volutpat eu blandit auctor, varius faucibus est.
@@ -196,7 +197,7 @@
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div class="col-sm-2 hidden-xs">
-                  <img src="img/face1.jpg" alt="..." class="img-responsive">
+                  <img src="{% static "img/face1.jpg" %}" alt="..." class="img-responsive">
                 </div>
                 <div class="col-sm-10">
                   <textarea class="form-control" rows="3" placeholder="Leave a message..."></textarea>
@@ -215,7 +216,7 @@
           <div class="comment">
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src="img/face2.jpg" alt="...">
+                <img class="media-object" src="{% static "img/face2.jpg" %}" alt="...">
               </a>
               <div class="media-body">
                 <p><a href="profile.html">Username</a></p>
@@ -232,7 +233,7 @@
           <div class="comment">
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src="img/face3.jpg" alt="...">
+                <img class="media-object" src="{% static "img/face3.jpg" %}" alt="...">
               </a>
               <div class="media-body">
                 <p><a href="profile.html">Username 2</a></p>
@@ -249,7 +250,7 @@
           <div class="comment">
             <div class="media">
               <a class="pull-left" href="#">
-                <img class="media-object" src="img/face4.jpg" alt="...">
+                <img class="media-object" src="{% static "img/face4.jpg" %}" alt="...">
               </a>
               <div class="media-body">
                 <p><a href="profile.html">Username 3</a></p>
@@ -405,8 +406,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/scrolltopcontrol.js"></script><!-- Scroll to top javascript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/custom.js" %}"></script>
+    <script src="{% static "js/scrolltopcontrol.js" %}"></script><!-- Scroll to top javascript -->
   </body>
 </html>

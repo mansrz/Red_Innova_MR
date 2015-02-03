@@ -3,16 +3,11 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadReque
 from django.contrib.auth import authenticate, login
 
 
+def home(request):
+    return render(request, 'index.html')
 
-
-
-
-
-
-
-
-
-
+def static_page(request, page):
+    return render(request, page)
 
 def login(request):
     if request.method == 'POST':

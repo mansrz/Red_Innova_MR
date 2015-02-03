@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
     <title>The Highland Template - Gallery</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link href="isotope/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="css/custom.css" />
-    <link href="fonts/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
+    <link href="{% static "isotope/css/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "css/elements.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}" />
+    <link href="{% static "fonts/font-awesome-4.0.3/css/font-awesome.min.css" %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -215,7 +216,7 @@
         <li class="isotope-item cat-1 cat-2 cat-4">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works1.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works1.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Proyecto Manhattan</span>
@@ -226,7 +227,7 @@
         <li class="isotope-item cat-2 cat-4">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works2.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works2.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Robots parlantes</span>
@@ -237,7 +238,7 @@
         <li class="isotope-item cat-3 cat-1">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works3.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works3.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Falsificador de notas</span>
@@ -248,7 +249,7 @@
         <li class="isotope-item cat-2 cat-4">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works4.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works4.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Paseador de perros</span>
@@ -259,7 +260,7 @@
         <li class="isotope-item cat-3 cat-1">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works2.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works2.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Mesa que toma fotos</span>
@@ -270,7 +271,7 @@
         <li class="isotope-item cat-1 cat-2">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works3.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works3.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Computadoras smart </span>
@@ -281,7 +282,7 @@
         <li class="isotope-item cat-1 cat-4">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works4.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works4.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Proyecto X</span>
@@ -292,7 +293,7 @@
         <li class="isotope-item cat-2">
           <a href="gallery-item.html">
             <span class="gallery-thumbnail">
-              <img class="img-responsive" src="img/works1.jpg" alt="...">
+              <img class="img-responsive" src="{% static "img/works1.jpg" %}" alt="...">
             </span>
             <span class="gallery-text">
               <span class="gallery-title">Innovacion4</span>
@@ -391,11 +392,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/scrolltopcontrol.js"></script><!-- Scroll to top javascript -->
-    <script src="isotope/js/jquery.isotope.min.js"></script><!-- Isotope gallery -->
-    <script src="js/isotope-custom.js"></script><!-- Isotope gallery custom file-->
-    <script src="js2/SesionID.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/custom.js" %}"></script>
+    <script src="{% static "js/scrolltopcontrol.js" %}"></script><!-- Scroll to top javascript -->
+    <script src="{% static "isotope/js/jquery.isotope.min.js" %}"></script><!-- Isotope gallery -->
+    <script src="{% static "js/isotope-custom.js" %}"></script><!-- Isotope gallery custom file-->
+    <script src="{% static "js2/SesionID.js" %}"></script>
   </body>
 </html>

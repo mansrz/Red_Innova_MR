@@ -24,6 +24,8 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None: 
             login(request, user)
+            entidad = user.entidad_set.all()
+            
             response_content = {
                 'username': user.username,
 

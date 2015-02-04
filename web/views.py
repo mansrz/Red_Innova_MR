@@ -30,9 +30,3 @@ def login(request):
 
     return render(request, 'sign-in.html', context)
 
-
-# Create your views here.
-#login
-#formularios de registro
-#profile
-# 

@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest, HttpResponseForbidden
-from django.contrib.auth import authenticate, login
+from django import http
+from django.contrib import auth
 
 
 def home(request):
@@ -14,21 +14,23 @@ def static_page(request, page):
 def login(request):
     if request.method == 'POST':
         try:
-            username = request.GET['username']
-            password = request.GET['password']
+            username = request.POST['username']
+            password = request.POST['password']
         except:
-            return HttpResponse('Malos Parametros ')
-        user = authenticate(username=username, password=password)
+            # Bad parameters
+            return http.HttpResponseRedirect('/')
+        user = auth.authenticate(username=username, password=password)
         if user is not None: 
             login(request, user)
-            entidad = user.entidad_set.all()
-            
-            response_content = {
-                'username': user.username,
-            }
+            auth.login(request, user)
+            # TODO redirect to profile
+            return http.HttpResponseRedirect('/')
         else:
-            return HttpResponseBadRequest('Usario o contraseña incorrecto')
-            
+            context = {'error': 'User or password is wrong'}
+    else:
+        context = {}
+    return render(request, 'sign-in.html', context)
+          
 def profile(request):
     try:
         user = request.user
@@ -63,9 +65,3 @@ def search(request):
     return response
   
 
-
-# Create your views here.
-#login
-#formularios de registro
-#profile
-# 

@@ -118,16 +118,18 @@
             <button type="submit" class="btn btn-blue">Go!</button>
           </form>
           <ul class="nav navbar-nav navbar-right hidden-xs">
+            {% if not user.is_authenticated %}
             <!-- Sign in & Sign up -->
             <li id="sign-up" class="show"><a href="sign-up.html">Sign Up</a></li>
             <li id="sign-in" class="show"><a href="#">Sign In</a></li>
+            {% else %}
             <!-- Signed in. Profile Menu -->
-            <li id="cogs-menu" class="hidden">
+            <li id="cogs-menu">
               <a href="edit-profile.html">
                 <i class="fa fa-gears fa-lg"></i>
               </a>
             </li>
-            <li id="profile-menu" class="dropdown hidden">
+            <li id="profile-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrator <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="account">
@@ -138,6 +140,7 @@
                 </li>
               </ul>
             </li>
+            {% endif %}
             <!-- Search Button -->
             <li id="search">
               <a href="#" id="search-btn"><i class="fa fa-search" id="search-icon"></i> Search</a>

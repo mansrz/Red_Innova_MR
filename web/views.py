@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest, HttpResponseForbidden
 from django.contrib.auth import authenticate, login
@@ -23,11 +25,43 @@ def login(request):
             
             response_content = {
                 'username': user.username,
-
             }
         else:
             return HttpResponseBadRequest('Usario o contraseña incorrecto')
             
+def profile(request):
+    try:
+        user = request.user
+    except:
+        HttpResponseBadRequest('Necesita hacer login')
+
+    if user.is_authenticated():
+        context = {
+            'user' : user
+        }
+        return render(raequest, 'profile.html',context)
+    else:
+        return HttpResponseForbidden()
+            
+def search(request):
+    term = request.GET.get('term')
+    if not term:
+        return redirect('/')
+
+    #Para buscar personas tanto naturales como instituciones
+    resultado = Persona.objects.filter(name__contains = term.lower())
+    if len(resultado) > 0:
+      result = 'No hay incidencias'
+
+    context ={
+      'resultado' : resultado
+    }
+    return 
+    response = render_to_response('web/search.json',context,context_instance= RequestContext(request))
+
+    response['Content-Type'] = 'application/json; charset=utf-8'
+    return response
+  
 
 
 # Create your views here.

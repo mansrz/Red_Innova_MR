@@ -1,0 +1,9 @@
+{% spaceless %}
+[
+{% for resultado in resultados %}
+    {
+        "url": "{{ resultado.name }}"
+    }{% if not forloop.last %},{% endif %}
+{% endfor %}
+]
+{% endspaceless %}

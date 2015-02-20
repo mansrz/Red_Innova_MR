@@ -18,10 +18,7 @@ def signup(request):
         user = UserForm(request.POST)
         institucion = InstitucionForm(request.POST)
         persona = PersonaForm(request.POST)
-        print institucion
-        print persona
-        print institucion
-        print institucion.get('tipo')
+       
     else:
         pass 
     form_institucion = InstitucionForm()

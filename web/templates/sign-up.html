@@ -179,7 +179,7 @@
                <div class="down_tipo">
                 <h3 class="hl top-zero">Tipo de Usuario <i class="fa fa-caret-square-o-down"></i></h3> 
                </div>
-               <form>
+               <form style="display:none;">
                  <input type="radio" name="tipo" value="institucion" checked>Institucion
                  <br>
                  <input type="radio" name="tipo" value="persona">Persona
@@ -240,6 +240,14 @@
                          <div class="col-md-8">{{ field }}</div>                      
                       </div>
                     {% endfor %}
+                    {% for field in form_institucion.hidden_fields %}
+                       <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>
+                       </div>
+                    {% endfor %}
+
                     {% for field in form_persona.visible_fields %}
                        <div class="row">
                          {{ field.error }}

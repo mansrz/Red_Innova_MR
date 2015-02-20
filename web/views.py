@@ -21,7 +21,6 @@ def login(request):
             return http.HttpResponseRedirect('/')
         user = auth.authenticate(username=username, password=password)
         if user is not None: 
-            login(request, user)
             auth.login(request, user)
             # TODO redirect to profile
             return http.HttpResponseRedirect('/')

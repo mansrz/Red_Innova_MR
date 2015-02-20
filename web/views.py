@@ -51,7 +51,7 @@ def login(request):
         if user is not None: 
             auth.login(request, user)
             # TODO redirect to profile
-            return http.HttpResponseRedirect('/')
+            return http.HttpResponseRedirect('/home.html')
         else:
             context = {'error': 'User or password is wrong'}
     else:

@@ -29,6 +29,10 @@ def login(request):
     else:
         context = {}
     return render(request, 'sign-in.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return http.HttpResponseRedirect('/')
           
 def profile(request):
     try:

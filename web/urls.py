@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     url(r'^sign-in.html$', views.login),
     url(r'^(.*\.html)$', views.static_page),
     url(r'^profile$', views.profile),
+    url(r'^sign-up$', views.signup),
 )

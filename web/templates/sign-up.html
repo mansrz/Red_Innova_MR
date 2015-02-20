@@ -173,8 +173,89 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 signup">
-          <h3 class="hl top-zero">Registration</h3>
+          <h3 class="hl top-zero">Registro</h3>
+            <div id="elegir" style="margin-left:100px;">
+
+               <div class="down_tipo">
+                <h3 class="hl top-zero">Tipo de Usuario <i class="fa fa-caret-square-o-down"></i></h3> 
+               </div>
+               <form>
+                 <input type="radio" name="tipo" value="institucion" checked>Institucion
+                 <br>
+                 <input type="radio" name="tipo" value="persona">Persona
+               </form>
+            </div>
+            </br>
+            <div id="institucion_form" style="display:block;" >
+              <form action="{{ action }}" method="POST">
+                <div class="container-fluid">
+                       <div class="row">
+                         <div class="col-md-1 fluid"></div>
+                         <div class="col-md-5"><h3 class="hl top-zero">Instituci&oacuten</h3></div>
+                         <div class="col-md-5"></div>
+                       </div>
+                     {% for field in form_user.visible_fields %}
+                      <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>                      
+                      </div>
+                    {% endfor %}
+                   {% for field in form_institucion.hidden_fields %}
+                       <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>
+                       </div>
+                    {% endfor %}
+
+                    {% for field in form_institucion.visible_fields %}
+                       <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>
+                       </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                   <div class="col-md-3"></div>
+                   <div class="col-md-3"> <input type="submit" value="Registrar" /></div>
+                   <div class="col-md-3"></div>
+                    
+                 </div>
+              </form>
+            </div>
+            <div id="persona_form" style="display:none;">
+              <form action="{{ action }}" method="POST">
+                <div class="container-fluid">
+                   <div class="row">
+                     <div class="col-md-1 fluid"></div>
+                     <div class="col-md-5"><h3 class="hl top-zero">Persona</h3></div>
+                     <div class="col-md-5"></div>
+                   </div>
+                    <input type="hidden" name="tipo" value="persona">
+                    {% for field in form_user.visible_fields %}
+                      <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>                      
+                      </div>
+                    {% endfor %}
+                    {% for field in form_persona.visible_fields %}
+                       <div class="row">
+                         {{ field.error }}
+                         <div class="col-md-4">{{ field.label_tag }}</div>
+                         <div class="col-md-8">{{ field }}</div>
+                       </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                   <div class="col-md-3"></div>
+                   <div class="col-md-3"> <input type="submit" value="Registrar" /></div>
+                   <div class="col-md-3"></div>
+                </div>
+              </form>
+            </div>
           <hr>
+          <!--
           <form role="form">
             <div class="form-group">
               <input type="text" class="form-control" id="exampleInputName1" placeholder="Your name" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your full name here." data-original-title="Name">
@@ -202,6 +283,7 @@
             </div>
             <button type="submit" class="btn btn-green">Create an account</button>
           </form>
+          -->
         </div>
       </div>
     </div>
@@ -295,5 +377,24 @@
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/custom.js" %}"></script>
     <script src="{% static "js/scrolltopcontrol.js" %}"></script><!-- Scroll to top javascript -->
+    <script>
+     $('input[name="tipo"]').click(function() {
+         tipo=$(this).val();
+         $('#institucion_form').hide();
+         $('#persona_form').hide();
+         $('#'+tipo+'_form').show(); 
+         $('#elegir form').css('display','none');
+        });
+
+      $('.down_tipo i').click(function(){
+         if($('#elegir form').css('display')=="block"){
+           $('#elegir form').css('display','none');
+          
+         }else{
+           $('#elegir form').css('display','block');
+         }
+      });
+
+    </script>
   </body>
 </html>

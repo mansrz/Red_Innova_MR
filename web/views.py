@@ -1,8 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django import http
 from django.contrib import auth
+from django.template import RequestContext
+from forms import * 
 
 
 def home(request):
@@ -10,6 +12,35 @@ def home(request):
 
 def static_page(request, page):
     return render(request, page)
+
+def signup(request):
+    if request.method == 'POST':
+        user = UserForm(request.POST)
+        institucion = InstitucionForm(request.POST)
+        persona = PersonaForm(request.POST)
+        print institucion
+        print persona
+        print institucion
+        print institucion.get('tipo')
+    else:
+        pass 
+    form_institucion = InstitucionForm()
+    form_persona = PersonaForm()
+    form_user = UserForm()  
+    return render_to_response('sign-up.html',{'form_institucion': form_institucion,\
+    'form_persona': form_persona,'form_user': form_user, },  context_instance=RequestContext(request))
+
+def signup_institucion(request):
+    if request.method == "POST":
+        tipo = request.GET.get('tipo')
+        print tipo
+    else:
+        formset = InstitucionForm()
+    return render_to_response("sign-up.html", {"formset": formset,})
+        
+
+def signup_persona(request):
+    pass
 
 def login(request):
     if request.method == 'POST':

@@ -52,7 +52,6 @@ def login(request):
             return http.HttpResponseRedirect('/')
         user = auth.authenticate(username=username, password=password)
         if user is not None: 
-            login(request, user)
             auth.login(request, user)
             # TODO redirect to profile
             return http.HttpResponseRedirect('/')
@@ -61,6 +60,10 @@ def login(request):
     else:
         context = {}
     return render(request, 'sign-in.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return http.HttpResponseRedirect('/')
           
 def profile(request):
     try:

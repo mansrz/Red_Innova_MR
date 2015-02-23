@@ -14,18 +14,44 @@ def static_page(request, page):
     return render(request, page)
 
 def signup(request):
-    if request.method == 'POST':
-        user = UserForm(request.POST)
-        institucion = InstitucionForm(request.POST)
-        persona = PersonaForm(request.POST)
-       
-    else:
-        pass 
     form_institucion = InstitucionForm()
     form_persona = PersonaForm()
     form_user = UserForm()  
-    return render_to_response('sign-up.html',{'form_institucion': form_institucion,\
-    'form_persona': form_persona,'form_user': form_user, },  context_instance=RequestContext(request))
+
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        user_type = request.POST['type']
+
+        if user_form.is_valid():
+            user = User(
+                      username= user_form.cleaned_data['username'],
+                      password = user_form.cleaned_data['password'],
+                    )
+            # Add valid user to parameters
+            request.POST.update(user=user.pk)
+
+            if user_type == 'INSTITUCION':
+                EntidadForm = InstitucionForm
+            elif user_type == 'PERSONA':
+                EntidadForm = PersonaForm
+            else:
+                raise Exception('Invalid type')
+                return HttpResponseBadRequest('Invalid type')
+
+            entidad_form = EntidadForm(request.POST)
+
+            if entidad_form.is_valid():
+                user.save()
+                entidad_form.save()
+
+                from django.http import HttpResponse
+                return HttpReponse('ok')
+
+    return render_to_response('sign-up.html',
+                              {'form_institucion': form_institucion,
+                               'form_persona': form_persona,
+                               'form_user': form_user, },
+                              context_instance=RequestContext(request))
 
 def signup_institucion(request):
     if request.method == "POST":

@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/elements.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}" />
     <link href="{% static "fonts/font-awesome-4.0.3/css/font-awesome.min.css" %}" rel="stylesheet">
+    {% block extrastyles %}{% endblock %}
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -248,5 +249,6 @@
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/custom.js" %}"></script>
     <script src="{% static "js/scrolltopcontrol.js" %}"></script><!-- Scroll to top javascript -->
+    {% block extrascripts %}{% endblock %}
   </body>
 </html>
